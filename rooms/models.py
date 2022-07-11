@@ -66,7 +66,8 @@ class Room(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=140)  # 필수사항이라 null 이나 blank 안 씀
     description = models.TextField()
-    country = CountryField(max_length=80)
+    country = CountryField()
+    city = models.CharField(max_length=80)
     price = models.IntegerField()
     address = models.CharField(max_length=140)
     guests = models.IntegerField()
