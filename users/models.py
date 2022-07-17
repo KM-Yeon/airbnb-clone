@@ -32,7 +32,7 @@ class User(AbstractUser):
     )
 
     # null은 db를 위해, blank는 form 공백을 위해
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True)
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=10, blank=True)
     bio = models.TextField(blank=True)
