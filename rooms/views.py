@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from datetime import datetime
+from . import models
 
 
 def all_rooms(request):
-    return HttpResponse(content="hello")
+    all_rooms = models.Room.objects.all()
+    return render(request, "rooms/home.html", context={"rooms": all_rooms})
