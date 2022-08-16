@@ -7,18 +7,21 @@ Home
 
 {% block content %}
 
-{% for room in rooms %}
+{% for room in rooms.object_list %}
 <h1>{{room.name}} / {{room.price}}</h1>
 {% endfor %}
 
 <h5>
-    {% if page is not 1%}
-    <a href="?page={{page|add:-1}}">Preview</a>
+    {% if rooms.has_previous %}
+    <a href="?page={{rooms.number|add:-1}}">Preview</a>
     {% endif %}
+
     page {{page}} of {{page_count}}
-    {% if not page == page_count %}
-    <a href="?page={{page|add:+1}}">Next</a>
-    {% endif %}
+
+    {% if rooms.has_next %}
+    <a href="?page={{rooms.number|add:+1}}">Next</a>
+
+    {{rooms.number}}
 </h5>
 
 {% endblock %}
